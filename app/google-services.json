@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "936351146330",
+    "project_id": "chatbot-android-42b3b",
+    "storage_bucket": "chatbot-android-42b3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936351146330:android:19cd88b2beff40b46e1363",
+        "android_client_info": {
+          "package_name": "com.hari.chatbot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrLU-px1sUwqjcSNRb1cYFg9ehDKCOJWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
