@@ -33,7 +33,8 @@ import com.hari.chatbot.viewmodel.RoomViewModel
 
 @Composable
 fun ChatRoomListScreen(
-    roomViewModel: RoomViewModel = viewModel()
+    roomViewModel: RoomViewModel = viewModel(),
+    onJoinClicked: (Room) -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var name by remember { mutableStateOf("") }
@@ -52,7 +53,7 @@ fun ChatRoomListScreen(
 
         LazyColumn {
             items(rooms) { room ->
-                RoomItem(room)
+                RoomItem(room, onJoinClicked = {onJoinClicked(room)})
             }
         }
 
@@ -114,7 +115,7 @@ fun ChatRoomListScreen(
 
 
 @Composable
-fun RoomItem(room: Room)  {
+fun RoomItem(room: Room, onJoinClicked: (Room) -> Unit)  {
     Row(
         modifier = Modifier.fillMaxWidth().padding(8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
@@ -122,7 +123,7 @@ fun RoomItem(room: Room)  {
         Text(text = room.name, fontSize = 16.sp, fontWeight = FontWeight.Normal)
 
         OutlinedButton(
-            onClick = {}
+            onClick = {onJoinClicked(room)}
         ) {
             Text("Join")
         }
@@ -132,5 +133,5 @@ fun RoomItem(room: Room)  {
 @Preview(showBackground = true)
 @Composable
 fun ChatRoomListScreenPreview() {
-    ChatRoomListScreen()
+    ChatRoomListScreen() {}
 }

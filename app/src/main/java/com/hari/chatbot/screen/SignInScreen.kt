@@ -45,8 +45,7 @@ fun SignInScreen(
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val result by authViewModel.authResult.observeAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
+
 
     Column(
         modifier = Modifier
@@ -86,12 +85,7 @@ fun SignInScreen(
                     }
                     is Result.Error -> {
                         Log.d("SignInFailed", "Failed")
-                        coroutineScope.launch {
-                            snackbarHostState.showSnackbar(
-                               "SignIn Failed! Try Again."
-                            )
-                        }
-                    }
+                   }
 
                     null -> {
                     Log.d("SignInNull", "Null")

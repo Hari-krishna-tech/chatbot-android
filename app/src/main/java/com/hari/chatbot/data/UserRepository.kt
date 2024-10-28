@@ -39,4 +39,22 @@ class UserRepository(
             .set(user).await()
 
     }
+
+    suspend fun getCurrentUser(): Result<User> = try {
+        val uid = auth.currentUser?.email
+        if(uid != null) {
+            val userDocument = firestore.collection("users").document(uid).get().await()
+            val user = userDocument.toObject(User::class.java)
+            if(user!= null) {
+                Log.d("user2", "$uid")
+               Result.Success(user)
+            } else {
+               Result.Error(Exception("User not found"))
+            }
+        } else {
+            Result.Error(Exception("User not authentication"))
+        }
+    } catch (e: Exception) {
+        Result.Error(e)
+    }
 }
